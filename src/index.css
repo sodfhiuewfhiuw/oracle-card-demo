@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/* ── 字體 CSS 變數 ──────────────────────────────────────────────────────── */
+:root {
+  --font-serif: 'Noto Serif TC', 'Georgia', 'Times New Roman', serif;
+  --font-sans:  'Noto Sans TC',  system-ui, 'Segoe UI', sans-serif;
+}
+
+/* ── 基礎排版 ────────────────────────────────────────────────────────────── */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fdf8f4;
+}
+
+/* ── Reduced Motion：關閉非必要動畫 ────────────────────────────────────── */
+/*
+  這只處理純 CSS 動畫/轉場。
+  Framer Motion（JS-driven）由各元件內的 useReducedMotion() 處理。
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
