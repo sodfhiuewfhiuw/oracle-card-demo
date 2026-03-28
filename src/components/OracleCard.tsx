@@ -25,11 +25,13 @@ const FLIP_SPRING_REDUCED = { stiffness: 2000, damping: 200, mass: 0.1 }
 // 兩個面共用的基礎樣式
 const faceStyle: React.CSSProperties = {
   position: 'absolute',
-  inset: 0,
+  top: 0, left: 0, right: 0, bottom: 0,
   borderRadius: '1rem',
   overflow: 'hidden',
   backfaceVisibility: 'hidden',
   WebkitBackfaceVisibility: 'hidden',
+  WebkitTransform: 'translateZ(0)',
+  isolation: 'isolate',
 }
 
 export function OracleCard({ card, flipped }: Props) {
@@ -180,13 +182,18 @@ export function OracleCard({ card, flipped }: Props) {
           {/* ── 卡背 ─────────────────────────────────────────────────── */}
           <div style={{ ...faceStyle, transform: 'rotateY(180deg)' }}>
             {card.cardBack ? (
-              <div
+              <img
+                src={`${import.meta.env.BASE_URL}${card.cardBack}`}
+                alt="card back"
                 style={{
                   position: 'absolute',
-                  top: 0, left: 0, right: 0, bottom: 0,
-                  backgroundImage: `url(${import.meta.env.BASE_URL}${card.cardBack})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                  top: 0, left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                  WebkitTransform: 'translateZ(0)',
+                  transform: 'translateZ(0)',
                 }}
               />
             ) : (
@@ -266,13 +273,18 @@ export function OracleCard({ card, flipped }: Props) {
           >
             {/* 牌面圖片 */}
             {card.image && (
-              <div
+              <img
+                src={`${import.meta.env.BASE_URL}${card.image}`}
+                alt={card.name}
                 style={{
                   position: 'absolute',
-                  top: 0, left: 0, right: 0, bottom: 0,
-                  backgroundImage: `url(${import.meta.env.BASE_URL}${card.image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                  top: 0, left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                  WebkitTransform: 'translateZ(0)',
+                  transform: 'translateZ(0)',
                 }}
               />
             )}
