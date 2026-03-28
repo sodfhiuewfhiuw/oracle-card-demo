@@ -180,10 +180,14 @@ export function OracleCard({ card, flipped }: Props) {
           {/* ── 卡背 ─────────────────────────────────────────────────── */}
           <div style={{ ...faceStyle, transform: 'rotateY(180deg)' }}>
             {card.cardBack ? (
-              <img
-                src={`${import.meta.env.BASE_URL}${card.cardBack}`}
-                alt="card back"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 0, left: 0, right: 0, bottom: 0,
+                  backgroundImage: `url(${import.meta.env.BASE_URL}${card.cardBack})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
               />
             ) : (
             <div
@@ -262,16 +266,13 @@ export function OracleCard({ card, flipped }: Props) {
           >
             {/* 牌面圖片 */}
             {card.image && (
-              <img
-                src={`${import.meta.env.BASE_URL}${card.image}`}
-                alt={card.name}
+              <div
                 style={{
                   position: 'absolute',
-                  inset: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  display: 'block',
+                  top: 0, left: 0, right: 0, bottom: 0,
+                  backgroundImage: `url(${import.meta.env.BASE_URL}${card.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
                 }}
               />
             )}
