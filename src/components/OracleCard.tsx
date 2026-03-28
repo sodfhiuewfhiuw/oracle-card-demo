@@ -179,7 +179,13 @@ export function OracleCard({ card, flipped }: Props) {
 
           {/* ── 卡背 ─────────────────────────────────────────────────── */}
           <div style={{ ...faceStyle, transform: 'rotateY(180deg)' }}>
-            {/* 深邃的寶石感底色：深紫茄 + 牌色調光 */}
+            {card.cardBack ? (
+              <img
+                src={card.cardBack}
+                alt="card back"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+            ) : (
             <div
               className="w-full h-full flex items-center justify-center"
               style={{
@@ -189,7 +195,6 @@ export function OracleCard({ card, flipped }: Props) {
                 `,
               }}
             >
-              {/* 外層呼吸光暈 */}
               <motion.div
                 className="absolute rounded-full"
                 animate={prefersReduced ? {} : {
@@ -202,7 +207,6 @@ export function OracleCard({ card, flipped }: Props) {
                   background: `radial-gradient(circle, ${card.color}28 0%, transparent 68%)`,
                 }}
               />
-              {/* 內層呼吸光暈 */}
               <motion.div
                 className="absolute rounded-full"
                 animate={prefersReduced ? {} : {
@@ -215,7 +219,6 @@ export function OracleCard({ card, flipped }: Props) {
                   background: `radial-gradient(circle, ${card.color}40 0%, transparent 70%)`,
                 }}
               />
-              {/* 中心符號 */}
               <motion.span
                 className="relative z-10"
                 animate={prefersReduced ? {} : { opacity: [0.14, 0.40, 0.14] }}
@@ -230,6 +233,7 @@ export function OracleCard({ card, flipped }: Props) {
                 ✦
               </motion.span>
             </div>
+            )}
 
             {/* 卡背光暈覆層 */}
             <motion.div
@@ -256,12 +260,27 @@ export function OracleCard({ card, flipped }: Props) {
               `,
             }}
           >
-            {/* 頂部氣氛光 */}
+            {/* 牌面圖片 */}
+            {card.image && (
+              <img
+                src={card.image}
+                alt={card.name}
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+            )}
+            {/* 底部文字遮罩漸層 */}
             <div
-              className="absolute top-0 left-0 right-0 pointer-events-none"
+              className="absolute bottom-0 left-0 right-0 pointer-events-none"
               style={{
-                height: '40%',
-                background: `radial-gradient(ellipse at 50% 0%, ${card.color}22 0%, transparent 72%)`,
+                height: '45%',
+                background: 'linear-gradient(to top, rgba(10,5,20,0.85) 0%, transparent 100%)',
               }}
             />
 
