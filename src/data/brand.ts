@@ -21,5 +21,5 @@ export const brand = {
   igButtonText: '前往 Instagram',
 
   /** Instagram 連結 */
-  igUrl: 'https://www.instagram.com/',
+  igUrl: 'https://www.instagram.com/tickingtk/',
 } as const
